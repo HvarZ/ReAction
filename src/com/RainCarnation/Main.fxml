@@ -2,6 +2,6 @@
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
-<Group>
-    <Button text="Click" />
+<Group xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.RainCarnation.ButtonController">
+    <Button text="Click!" onAction="#click" fx:id="button"  />
 </Group>
