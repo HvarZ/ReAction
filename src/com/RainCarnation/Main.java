@@ -21,7 +21,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main.fxml")));
-
+        root.setLayoutX(230);
+        root.setLayoutY(270);
         Scene scene = new Scene(root);
         scene.setFill(Color.BLACK);
 

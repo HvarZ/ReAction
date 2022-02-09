@@ -8,9 +8,11 @@ import javafx.scene.control.Button;
 public class ButtonController {
     @FXML
     private Button button;
-
+    private int counter = 0;
+    
     @FXML
     private void click(ActionEvent action) {
-        button.setText("Clicked");
+        button.setText(Integer.toString(counter));
+        counter++;
     }
 }
