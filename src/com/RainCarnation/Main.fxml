@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.RainCarnation.MainController">
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="450.0" style="-fx-background-color: silver;">
          <children>
@@ -15,10 +15,11 @@
                </font></Label>
          </children>
       </AnchorPane>
-      <Button fx:id="mainButton" layoutY="234.0" mnemonicParsing="false" prefHeight="222.0" prefWidth="450.0" style="-fx-background-color: silver;" text="Click here to start">
+      <Button fx:id="mainButton" layoutY="234.0" mnemonicParsing="false" onAction="#click" prefHeight="222.0" prefWidth="450.0" style="-fx-background-color: silver;" text="Click here to start">
          <font>
             <Font name="Impact" size="26.0" />
          </font>
+
       </Button>
       <Label layoutX="14.0" layoutY="91.0" prefHeight="85.0" prefWidth="436.0" text="This app is made to test the reaction. " textAlignment="CENTER" textFill="SILVER">
          <font>
@@ -28,6 +29,16 @@
       <Label layoutX="14.0" layoutY="124.0" prefHeight="85.0" prefWidth="436.0" text="So what are you waiting for... (5...4...3...)" textAlignment="CENTER" textFill="SILVER">
          <font>
             <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="bestResult" layoutX="100.0" layoutY="500.0" text="Best:" textFill="SILVER">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="averageResult" layoutX="267.0" layoutY="500.0" text="Average:" textFill="SILVER">
+         <font>
+            <Font name="Impact" size="23.0" />
          </font>
       </Label>
    </children>
