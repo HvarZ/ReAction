@@ -2,18 +2,14 @@ package com.RainCarnation;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.Collections;
+import java.util.Random;
 
-
-public class MainController implements Initializable {
+public class MainController {
     @FXML
     private Label averageResult;
 
@@ -24,34 +20,46 @@ public class MainController implements Initializable {
     private Button mainButton;
 
     private ButtonStatus status = ButtonStatus.Start;
-    private double singleResult;
-    private ArrayList<Double> times;
+    private ArrayList<Long> times = new ArrayList<>();
+    private final Random randomEngine = new Random();
+    private long startTime;
 
     @FXML
-    private ImageView expectationImage;
-
-    @FXML
-    void click(ActionEvent event) {
+    public void click(ActionEvent event) throws Exception {
         if (status == ButtonStatus.Start) {
             mainButton.setText("Wait a green color");
             status = ButtonStatus.Middle;
             mainButton.setStyle("-fx-background-color: #fbff05");
         } else if (status == ButtonStatus.Middle) {
-            mainButton.setText("Very good job");
+            Thread.sleep(randomEngine.nextInt(2000) + 1000);
+            mainButton.setText("Click it fast!!!");
             status = ButtonStatus.DoubleClick;
             mainButton.setStyle("-fx-background-color: #19f749");
+            startTime = System.currentTimeMillis();
         } else if (status == ButtonStatus.DoubleClick) {
-            mainButton.setText("Your result: " + singleResult);
+            long singleResult = System.currentTimeMillis() - startTime;
+            mainButton.setText("Your result: " + singleResult + "ms" + " (" + (times.size() + 1) + "/5)");
             status = ButtonStatus.Result;
+            times.add(singleResult);
+            long sum = 0;
+            for (long time : times) {
+                sum += time;
+            }
+            averageResult.setText("Average: " + sum / times.size() + "ms");
+            bestResult.setText("Best: " + Collections.min(times) + "ms");
+            if (times.size() == 5) {
+                times.clear();
+            }
         } else {
+            if (times.size() == 0) {
+                averageResult.setText("Average: ~");
+                bestResult.setText("Best: ~");
+            }
             mainButton.setText("Click to start...");
             status = ButtonStatus.Start;
             mainButton.setStyle("-fx-background-color: silver");
         }
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        expectationImage = new ImageView(new Image("com/RainCarnation/assets/img_1.png"));
-    }
 }
+
+// problems with multiclick and second stage
