@@ -25,6 +25,7 @@ public class Main extends Application {
         stage.setTitle("ReActionApp");
         stage.setWidth(450);
         stage.setHeight(600);
+        stage.setResizable(false);
 
         stage.show();
     }
