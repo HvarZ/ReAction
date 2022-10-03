@@ -1,4 +1,4 @@
-package com.RainCarnation;
+package com.ReActionApp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
